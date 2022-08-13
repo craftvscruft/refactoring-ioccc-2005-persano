@@ -1,0 +1,6 @@
+.DS_Store
+persano
+*.o
+cmake-build-debug
+out/
+.idea/
