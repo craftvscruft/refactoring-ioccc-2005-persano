@@ -5,10 +5,16 @@
 
 const int H = 20;
 
-typedef double R, V[3], U[4], (*J)(R);
+typedef double double_4[4];
 
-V o, d, v;
-R (*q)[H][6], C[4 * H][H][6], sr = 15, br = 25, A, s, t;
+double o[3], d[3], v[3];
+double (*q)[20][6];
+double C[80][20][6];
+double sr = 15;
+double br = 25;
+double A;
+double s;
+double t;
 int P;
 int Q;
 int g;
@@ -16,10 +22,7 @@ int S;
 int k;
 int e = 256;
 
-int (*u)(int) = putchar;
-
 int D[64];
-J f = cos, Y = sin;
 char B[256];
 
 void T(int *p, int k, int n) {
@@ -39,19 +42,21 @@ void O(int c) {
             (S > e - 2 || c == 129) && (*B = S, S = fwrite(B, S + 1, 1, stdout) - 1);
 }
 
-void N(R *v) {
-    R w = sqrt(*v * *v + 1[v] * v[1] + v[2] * 2[v]);
+void N(double *v) {
+    double w = sqrt(*v * *v + 1[v] * v[1] + v[2] * 2[v]);
     for (k = 0; k < 3; k++) {
         v[k] = v[k] / w;
     }
 }
 
 void K(int j) {
-    V n, p;
-    R *b = (*q)[j], w = f(A), x = Y(A);
+    double n[3], p[3];
+    double *b = (*q)[j];
+    double w = cos(A);
+    double x = sin(A);
     for (k = 0; k < 3; k++) {
         p[k] = br * o[k] +
-               sr * (n[k] = f(t) * k[v] + Y(t) * (v[(k + 1) % 3] * d[(k + 2) % 3] -
+               sr * (n[k] = cos(t) * k[v] + sin(t) * (v[(k + 1) % 3] * d[(k + 2) % 3] -
                                                   v[(k + 2) % 3] * d[(k + 1) % 3]));
     }
     *b++ = p[1] + e / 2, *b++ = -*p * x + p[2] * w - e * e,
@@ -61,16 +66,19 @@ void K(int j) {
     }
 }
 
-void M(R *a, int s, void (*m)(int)) {
+void M(double *a, int s, void (*m)(int)) {
     int i;
-    R d = pow(25 / log(36), 4) / s / 377;
+    double d = pow(25 / log(36), 4) / s / 377;
     for (*a = i = 0; i < s; i++, *a += d) {
         m(i);
     }
 }
 
 void G(int i) {
-    R w = -Y(P * s), x = f(P * s), y = Y(Q * s), z = f(Q * s);
+    double w = -sin(P * s);
+    double x = cos(P * s);
+    double y = sin(Q * s);
+    double z = cos(Q * s);
     for (k = 0; k < 3; k++) {
         v[k] = k[o] = (k < 2) * (x + 3) * (k ? y : z) - !(k - 2) * w;
     }
@@ -86,11 +94,13 @@ void G(int i) {
     N(v), q = &C[i], M(&t, H, K);
 }
 
-void W(char *s) { *s && (W(s + 1), u(*s - 98 * (*s > 97))); }
+void W(char *s) { *s && (W(s + 1), putchar(*s - 98 * (*s > 97))); }
 
 void E(int z) {
-    R *r, *a, *b;
-    U *q, l, x, d, I[256];
+    double *r;
+    double *a;
+    double *b;
+    double_4 *q, l, x, d, I[256];
     int i;
     int j;
     int m;
@@ -136,13 +146,10 @@ void E(int z) {
         }
     }
     O(129);
-    u(0);
+    putchar(0);
 }
 
-int
-
-
-main(int c, char **v) {
+int main(int c, char **v) {
     if (c < 3) {
         return fprintf(stderr, "Usage: %s P Q [F]\n", *v), 1;
     }
@@ -154,14 +161,14 @@ main(int c, char **v) {
     W("bb\346cbcba98FIG");
 
     for (; k < 384; k++) {
-        u(k / 3 << ("gdb"[k % 3] - 97) | 31 | (k % 3 != 1) << 5);
+        putchar(k / 3 << ("gdb"[k % 3] - 97) | 31 | (k % 3 != 1) << 5);
     }
 
     W("bbbce0.2EPACSTEN\x0b\xff!"),
 
             M(&A, c > 3 ? atoi(v[3]) : 40, E),
 
-            u(59);
+            putchar(59);
 
     return 0;
 }
