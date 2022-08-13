@@ -15,8 +15,7 @@ double br = 25;
 double A;
 double s;
 double t;
-int P;
-int Q;
+
 int g;
 int S;
 int k;
@@ -65,16 +64,20 @@ void K(int j) {
         b[k] = fabs(*n * !!k + n[1] * (k < 2) + n[2]) / sqrt(2 + !(k - 1));
     }
 }
+double getD(int s) {
+    return pow(25 / log(36), 4) / s / 377;
+}
 
-void M(double *a, int s, void (*m)(int)) {
-    int i;
-    double d = pow(25 / log(36), 4) / s / 377;
-    for (*a = i = 0; i < s; i++, *a += d) {
-        m(i);
+
+
+void m_loop_K(double *a, int s) {
+    double d = getD(s);
+    for (int i = *a = 0; i < s; i++, *a += d) {
+        K(i);
     }
 }
 
-void G(int i) {
+void G(int i, int P, int Q) {
     double w = -sin(P * s);
     double x = cos(P * s);
     double y = sin(Q * s);
@@ -91,12 +94,20 @@ void G(int i) {
     for (k = 0; k < 3; k++) {
         v[k] = k[v] - w * d[k];
     }
-    N(v), q = &C[i], M(&t, H, K);
+    N(v), q = &C[i], m_loop_K(&t, H);
 }
 
 void W(char *s) { *s && (W(s + 1), putchar(*s - 98 * (*s > 97))); }
 
-void E(int z) {
+void m_loop_G(double *a, int s, int P, int Q) {
+    double d = getD(s);
+    for (int i = *a = 0; i < s; i++, *a += d) {
+        G(i, P, Q);
+    }
+}
+
+
+void E(int z, int P, int Q) {
     double *r;
     double *a;
     double *b;
@@ -109,7 +120,7 @@ void E(int z) {
     int w;
     int h;
     int Y = sizeof l;
-    fputc(46, stderr), M(&s, 4 * H, G), W("ibcbcbbbbb,"), g = 130, O(e / 2);
+    fputc(46, stderr), m_loop_G(&s, 4 * H, P, Q), W("ibcbcbbbbb,"), g = 130, O(e / 2);
     for (y = 0; y < e; y++) {
         for (i = e; i;) {
             *(I[--i]) = 0;
@@ -149,14 +160,25 @@ void E(int z) {
     putchar(0);
 }
 
+void m_loopE(double *a, int s, int P, int Q) {
+    double d = getD(s);
+    for (int i = *a = 0; i < s; i++, *a += d) {
+        E(i, P, Q);
+    }
+}
+
+
+
+
+
 int main(int c, char **v) {
     if (c < 3) {
         return fprintf(stderr, "Usage: %s P Q [F]\n", *v), 1;
     }
 
-    P = atoi(v[1]), Q = atoi(v[2]),
-
-            T(D, 3, 0);
+    int P = atoi(v[1]);
+    int Q = atoi(v[2]);
+    T(D, 3, 0);
 
     W("bb\346cbcba98FIG");
 
@@ -166,11 +188,9 @@ int main(int c, char **v) {
 
     W("bbbce0.2EPACSTEN\x0b\xff!"),
 
-            M(&A, c > 3 ? atoi(v[3]) : 40, E),
+            m_loopE(&A, c > 3 ? atoi(v[3]) : 40, P, Q),
 
             putchar(59);
 
     return 0;
 }
-
-/* vi:set ts=8: */
