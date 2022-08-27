@@ -1,4 +1,4 @@
-From [2005 IOCCC](https://www.ioccc.org/years.html#2005) (International Obfuscated C Code Contest)
+From [2005 IOCCC](https://www.ioccc.org/years.html#2005) (International Obfuscated C Code Contest). See `refactor` branch for untangled version or [follow along with the video](https://youtu.be/GEg-9D3iZHg) on Craft vs Cruft YouTube channel.
 
 # Best of show
 
