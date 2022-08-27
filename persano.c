@@ -15,11 +15,7 @@ double br = 25;
 double A;
 double s;
 double t;
-
-int g;
-int S;
-int k;
-int e = 256;
+const int e = 256;
 
 int D[64];
 char B[256];
@@ -36,6 +32,7 @@ void T(int *p, int k, int n) {
 }
 
 void O(int c) {
+    static int S;
     B[++S] = c,
 
             (S > e - 2 || c == 129) && (*B = S, S = fwrite(B, S + 1, 1, stdout) - 1);
@@ -43,7 +40,7 @@ void O(int c) {
 
 void N(double *v) {
     double w = sqrt(*v * *v + 1[v] * v[1] + v[2] * 2[v]);
-    for (k = 0; k < 3; k++) {
+    for (int k = 0; k < 3; k++) {
         v[k] = v[k] / w;
     }
 }
@@ -53,6 +50,7 @@ void K(int j) {
     double *b = (*q)[j];
     double w = cos(A);
     double x = sin(A);
+    int k;
     for (k = 0; k < 3; k++) {
         p[k] = br * o[k] +
                sr * (n[k] = cos(t) * k[v] + sin(t) * (v[(k + 1) % 3] * d[(k + 2) % 3] -
@@ -82,6 +80,7 @@ void G(int i, int P, int Q) {
     double x = cos(P * s);
     double y = sin(Q * s);
     double z = cos(Q * s);
+    int k;
     for (k = 0; k < 3; k++) {
         v[k] = k[o] = (k < 2) * (x + 3) * (k ? y : z) - !(k - 2) * w;
     }
@@ -120,11 +119,14 @@ void E(int z, int P, int Q) {
     int w;
     int h;
     int Y = sizeof l;
-    fputc(46, stderr), m_loop_G(&s, 4 * H, P, Q), W("ibcbcbbbbb,"), g = 130, O(e / 2);
+    fputc(46, stderr), m_loop_G(&s, 4 * H, P, Q), W("ibcbcbbbbb,");
+    int g = 130;
+    O(e / 2);
     for (y = 0; y < e; y++) {
         for (i = e; i;) {
             *(I[--i]) = 0;
         }
+        int k;
         for (; i < 4 * H * H; i++) {
             for (*l = k = 0; k - 5; k++, a = b) {
                 if (b = C[(i / H + ((k ^ k / 2) & 1)) % (4 * H)][(i + (k / 2 & 1)) % H],
@@ -182,7 +184,7 @@ int main(int c, char **v) {
 
     W("bb\346cbcba98FIG");
 
-    for (; k < 384; k++) {
+    for (int k=0; k < 384; k++) {
         putchar(k / 3 << ("gdb"[k % 3] - 97) | 31 | (k % 3 != 1) << 5);
     }
 
